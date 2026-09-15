@@ -1,11 +1,11 @@
-import { CustomerAccount } from "./types";
+import { CustomerAccount, Guest, Member } from "./types";
 
 export function createGuest(
   id: number,
   name: string,
   phone: string | undefined,
   address: { street: string; city: string; pincode: string }
-): CustomerAccount {
+): Guest {
   return {
     id,
     name,
@@ -21,7 +21,7 @@ export function createMember(
   phone: string | undefined,
   address: { street: string; city: string; pincode: string },
   membershipLevel: "silver" | "gold" | "platinum"
-): CustomerAccount {
+): Member {
   const discountMap: Record<"silver" | "gold" | "platinum", number> = {
     silver: 5,
     gold: 10,

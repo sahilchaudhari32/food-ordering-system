@@ -17,6 +17,7 @@ import { calculateDiscount, calculateTax, generateBill } from "./billing";
 import { processPayment } from "./payment";
 import { updateOrderStatus } from "./order";
 import {
+  Bill,
   CartItem,
   CustomerAccount,
   OrderStatus,
@@ -109,16 +110,17 @@ async function createCustomerPrompt(): Promise<void> {
       return;
     }
 
-    customer = createMember(
+    const member = createMember(
       Date.now(),
       name,
       phone,
       address,
       levelInput
     );
+    customer = member;
 
     console.log(
-      `Member created successfully. Membership ID: ${customer.membershipId}`
+      `Member created successfully. Membership ID: ${member.membershipId}`
     );
   } else if (type === "guest") {
     customer = createGuest(Date.now(), name, phone, address);
@@ -326,10 +328,7 @@ async function checkoutPrompt(): Promise<void> {
   }
 }
 
-function printBill(bill: NonNullable<Extract<
-  ReturnType<typeof generateBill>,
-  { status: "success" }
->>["bill"]>): void {
+function printBill(bill: Bill): void {
   printHeader("ORDER SUMMARY");
 
   console.log(`Order ID: ${bill.orderId}`);
