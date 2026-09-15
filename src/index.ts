@@ -364,7 +364,7 @@ function printBill(bill: Bill): void {
 
   console.log(`Order Status: ${bill.orderStatus.toUpperCase()}`);
   console.log("==============================================");
-  console.log("          Thank you for ordering! 🍔");
+  console.log("          Thank you for ordering! ");
   console.log("==============================================");
 }
 
@@ -445,9 +445,9 @@ function showCustomer(): void {
 
 function showMenu(): void {
   console.log(`
-╔══════════════════════════════════════════════╗
-║          🍔 FOOD ORDERING SYSTEM             ║
-╚══════════════════════════════════════════════╝
+══════════════════════════════════════════════
+          FOOD ORDERING SYSTEM              
+══════════════════════════════════════════════
   1. View Food Menu
   2. Create Customer
   3. View Customer
